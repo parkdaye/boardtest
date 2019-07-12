@@ -10,7 +10,7 @@ public interface BoardDao {
 	
 	BoardDto getPostById(int boardId);
 	
-	void insertPost(BoardDto board);
+	int insertPost(BoardDto board);
 	
 	void updatePost(BoardDto board);
 	

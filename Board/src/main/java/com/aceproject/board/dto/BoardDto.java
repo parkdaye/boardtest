@@ -18,5 +18,7 @@ public class BoardDto {
 	private Date boardCrtDate;
 	
 	private int userId;
+	
+	private String userNickname = "";
 
 }

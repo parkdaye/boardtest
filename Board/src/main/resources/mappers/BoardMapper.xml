@@ -11,15 +11,17 @@
 		<result property="content" column="board_content"/>
 		<result property="boardCrtDate" column="board_crt_date"/>
 		<result property="userId" column="user_id"/>
+		<result property="userNickname" column="user_nickname"/>
 	</resultMap>
     
     <select id="selectBoardList" resultMap="BoardMap">
-        select * 
-        from board
-        order by board_id DESC;
+        select b.board_id, b.board_title, b.board_content, b.board_crt_date, u.user_id, u.user_nickname 
+        from board b, user u
+        where b.user_id = u.user_id
+        order by b.board_id DESC;
     </select>
     
-    <insert id="insertPost" parameterType="com.aceproject.board.dto.BoardDto">
+    <insert id="insertPost" useGeneratedKeys="true" parameterType="com.aceproject.board.dto.BoardDto" keyProperty="boardId">
         insert into
         board(
             board_title
@@ -37,7 +39,6 @@
         update board set
             board_title = #{title}
             , board_content = #{content}
-            , user_id = #{userId}
         where
             board_id = #{boardId}
     </update>
@@ -49,8 +50,9 @@
     </delete>
     
     <select id="selectPostById" parameterType="int" resultType="com.aceproject.board.dto.BoardDto">
-        select * from board
-        where
-            board_id = #{boardId}
+        select b.board_id, b.board_title, b.board_content, b.board_crt_date, u.user_id, u.user_nickname
+        from board b, user u
+        where b.user_id = u.user_id
+        and b.board_id = #{boardId}
     </select>
 </mapper>

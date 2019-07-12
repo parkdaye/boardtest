@@ -6,33 +6,33 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 
-<title>게시글 작성</title>
+<title>게시글 수정</title>
 </head>
 <body>
-    <h3>게시글 작성</h3>
+    <h3>게시글 수정</h3>
+    <p id="boardId" style="display:none">{{boardpost.boardId}}</p>
     <div style="padding : 30px;">
         <form>
           <div class="form-group">
             <label>제목</label>
-            <input type="text" id="title" class="form-control">
+            <input type="text" id="title" class="form-control" value={{boardpost.title}}>
           </div>
           <div class="form-group">
-            <label>작성자</label>
-            <input type="text" id="userId" class="form-control">
-          </div>
+       		<label>작성자</label>
+        	<span>{{boardpost.userNickname}}</span>
+      	  </div>
           <div class="form-group">
             <label>내용</label>
-            <textarea id="content" class="form-control" rows="5"></textarea>
+            <textarea id="content" class="form-control" rows="5">{{boardpost.content}}</textarea>
           </div>
           <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="history.back(-1);">취소</button>
-          <button type="button" class="btn btn-primary" id="btn-save" >등록</button>
+          <button type="button" class="btn btn-primary" id="btn-update" >수정</button>
         </form>
     </div>
 	
-	{{post.postId}}
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
 	
-	<script src="/js/writepost.js"></script>
+	<script src="/js/updatepost.js"></script>
 </body>
 </html>

@@ -28,8 +28,8 @@ public class BoardService {
 	}
 	
 	@Transactional
-	public void writePost(BoardDto board) {
-		boardDao.insertPost(board);
+	public int writePost(BoardDto board) {
+		return boardDao.insertPost(board);
 	}
 
 	@Transactional

@@ -28,35 +28,32 @@ public class BoardController {
 	
 	@GetMapping("/boards/{boardId}")
 	public String getBoardPost(@PathVariable("boardId") int boardId, Model model) {
-		model.addAttribute("boardPost", boardService.getPostById(boardId));
+		model.addAttribute("boardpost", boardService.getPostById(boardId));
 		return "board";
 	}
 	
 	@GetMapping("/boards/posts")
 	public String writePostForm() {
-		System.out.println("get boards/posts");
 		return "writepost";
 	}
 	
 	
 	@PostMapping("/boards/posts") 
 	public String writePost(@RequestBody BoardDto board){
-		System.out.println("berfro");
 		boardService.writePost(board);
-		System.out.println("test");
-		return "redirect://localhost:8080/boards";
+		return "redirect:/boards";
 	}
 	
 	@GetMapping("/boards/posts/{boardId}")
 	public String updatePostForm(@PathVariable("boardId") int boardId, Model model) {
-		model.addAttribute("boardPost", boardService.getPostById(boardId));
+		model.addAttribute("boardpost", boardService.getPostById(boardId));
 		return "updatepost";
 	}
 	
 	@PutMapping("/boards/posts/{boardId}")
 	public String updatePost(@RequestBody BoardDto board, @PathVariable("boardId") int boardId) {
 		boardService.updatePost(board);
-		return "redirect:boards/" + boardId;
+		return "redirect:/boards/" + boardId;
 	}
 	
 	@DeleteMapping("/boards/posts/{boardId}")

@@ -20,7 +20,7 @@ public class UserService {
 		return userDao.save(dto);
 	}
 	
-	@Transactional(readOnly = true)
+//	@Transactional(readOnly = true)
 	public List<UserDto> getUserAll() {
 		return userDao.getUserAll();
 	}

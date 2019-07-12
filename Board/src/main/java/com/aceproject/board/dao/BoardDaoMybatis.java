@@ -23,8 +23,8 @@ public class BoardDaoMybatis extends CommonDao implements BoardDao {
 	}
 
 	@Override
-	public void insertPost(BoardDto board) {
-		getSqlSession().insert(NAMESPACE + "insertPost", board);
+	public int insertPost(BoardDto board) {
+		return getSqlSession().insert(NAMESPACE + "insertPost", board);
 	}
 
 	@Override

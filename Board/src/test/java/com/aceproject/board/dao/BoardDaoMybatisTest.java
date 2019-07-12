@@ -27,9 +27,9 @@ public class BoardDaoMybatisTest {
 				.userId(1)
 				.build();
 		
-		boardDao.insertPost(board);
+		int boardId = boardDao.insertPost(board);
 		
-		BoardDto board2 = boardDao.getPostById(6);
+		BoardDto board2 = boardDao.getPostById(boardId);
 		assertThat(board.getTitle(), is(board2.getTitle()));
 		
 	}
